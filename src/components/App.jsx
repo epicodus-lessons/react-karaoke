@@ -1,11 +1,12 @@
 import React from "react";
+import SongDisplay from "./SongDisplay";
 import styles from "./../styles/App.css";
 
 function App(){
   return (
     <div className = {styles.app}>
-      <div className = {styles.container}>
-        <h1>hello world!</h1>
+      <div className = "container">
+        <SongDisplay />
       </div>
     </div>
   );
