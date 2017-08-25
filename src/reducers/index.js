@@ -1,5 +1,5 @@
 import * as types from "./../constants/ActionTypes";
-import defaultState from "./../constants/ActionTypes";
+import { defaultState } from "./../constants/DefaultState";
 
 const reducer = (state = defaultState, action) => {
   let newState;
