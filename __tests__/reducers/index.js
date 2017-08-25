@@ -8,28 +8,15 @@ describe("Karaoke Reducer", () => {
     expect(reducer(defaultState, { type: null })).toEqual(defaultState);
   });
 
+  it("should update chorus phrase", () => {
+    expect(reducer(defaultState, { type: types.NEXT_LYRIC }).currentPhrase).toEqual(defaultState.chorusArray[1]);
+  });
+
 
 });
 
 
-// expect(
-//   reducer(initialState, { type: null })
-// ).toEqual(initialState);
-//
-// expect(
-//   reducer(initialState, { type: 'NEXT_LYRIC' })
-// ).toEqual({
-//   chorusString: chorus,
-//   chorusArray: chorusArray,
-//   arrayPosition: 1,
-//   currentPhrase: chorusArray[1]
+// it("should restart song", () => {
+//   const newState = reducer(defaultState, { type: types.NEXT_LYRIC });
+//   expect(reducer(newState, { type: types.RESTART_SONG })).toEqual(defaultState);
 // });
-//
-// expect(
-//   reducer({
-//     chorusString: chorus,
-//     chorusArray: chorusArray,
-//     arrayPosition: 1,
-//     currentPhrase: chorusArray[1]
-//   }, { type: 'RESTART_SONG' })
-// ).toEqual(initialState);
