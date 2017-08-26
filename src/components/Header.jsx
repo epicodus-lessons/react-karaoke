@@ -6,7 +6,7 @@ function Header(){
   return (
     <div className = {styles.header}>
       <div className = {styles.appTitle}>
-        <h1>header</h1>
+        <h1>SONGZ SINGER</h1>
       </div>
       <SongSearch />
     </div>

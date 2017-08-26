@@ -1,7 +1,9 @@
 .header {
-  border: 2px solid green;
+  min-height: 100px;
   display: flex;
   justify-content: space-between;
+  background-color: #150019;
+  color: white;
 }
 
 .appTitle {

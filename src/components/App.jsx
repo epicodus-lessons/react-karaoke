@@ -7,6 +7,7 @@ function App(){
   return (
     <div className = {styles.app}>
       <Header />
+      <div><hr/></div>
       <div className = "container">
         <SongDisplay />
       </div>

@@ -1,5 +1,6 @@
 .songDisplay {
   height: 100%;
+  /*padding-top: 105px;*/
   user-select: none;
 }
 
