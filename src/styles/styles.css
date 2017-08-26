@@ -10,7 +10,9 @@ body, #react-app-root {
 }
 
 .container {
-  height: calc(100vh - 105px);
+  height: calc(100vh - 110px);
+  min-width: 450px;
+  min-height: 650px;
   margin: auto;
   /*margin-top: -105px;*/
   width: 85%;
