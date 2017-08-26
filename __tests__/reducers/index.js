@@ -9,11 +9,11 @@ describe("Karaoke Reducer", () => {
   });
 
   it("should update chorus phrase", () => {
-    expect(reducer(defaultState, { type: types.NEXT_LYRIC }).currentPhrase).toEqual(defaultState.chorusArray[1]);
+    expect(reducer(defaultState, { type: types.NEXT_LINE }).currentPhrase).toEqual(defaultState.chorusArray[1]);
   });
 
   it("should restart song", () => {
-    const newState = reducer(defaultState, { type: types.NEXT_LYRIC });
+    const newState = reducer(defaultState, { type: types.NEXT_LINE });
     expect(reducer(newState, { type: types.RESTART_SONG })).toEqual(defaultState);
   });
 

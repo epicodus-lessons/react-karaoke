@@ -4,9 +4,11 @@ import { defaultState } from "./../constants/DefaultState";
 const reducer = (state = defaultState, action) => {
   let newState;
   switch (action.type) {
-    case types.NEXT_LYRIC:
+    case types.NEXT_LINE:
       let newPosition = state.arrayPosition + 1;
       newState = {
+        songTitle: state.songTitle,
+        artist: state.artist,
         chorusString: state.chorusString,
         chorusArray: state.chorusArray,
         arrayPosition: newPosition,
@@ -15,6 +17,8 @@ const reducer = (state = defaultState, action) => {
       return newState;
     case types.RESTART_SONG:
       newState = {
+        songTitle: state.songTitle,
+        artist: state.artist,
         chorusString: state.chorusString,
         chorusArray: state.chorusArray,
         arrayPosition: 0,

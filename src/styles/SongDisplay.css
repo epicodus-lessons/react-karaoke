@@ -1,5 +1,6 @@
 .songDisplay {
   height: 100%;
+  user-select: none;
 }
 
 .songInfo {
@@ -28,5 +29,6 @@
 }
 
 .phrase h1 {
-  margin-bottom: -2em;
+  margin: 0 1em -2em 1em;
+  text-align: center;
 }
