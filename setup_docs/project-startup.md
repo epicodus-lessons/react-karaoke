@@ -12,9 +12,9 @@
   ```
   npm install react@15.5.4 react-dom@15.5.4 --save  
   npm install webpack@2.6.0 --save-dev
-  npm install babel-core@6.24.1
-  npm install babel-loader@7.0.0
-  npm install babel-preset-es2015@6.24.1
+  npm install babel-core@6.24.1 --save-dev
+  npm install babel-loader@7.0.0 --save-dev
+  npm install babel-preset-es2015@6.24.1 --save-dev
   npm install babel-preset-react@6.24.1 --save-dev
   npm install prop-types@15.5.10 --save
   npm install webpack-dev-server@2.5.0 --save-dev
