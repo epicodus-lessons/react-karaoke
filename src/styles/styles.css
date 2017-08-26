@@ -1,4 +1,4 @@
-body, #react-app-root, .container {
+body, #react-app-root {
   margin:0;
   padding:0;
   height: 100vh;
@@ -9,12 +9,12 @@ body, #react-app-root, .container {
   background-color: #FCFCFC;
 }
 
-body {
-  background-color: #150019;
-}
-
 .container {
+  height: calc(100vh - 105px);
   margin: auto;
+  /*margin-top: -105px;*/
   width: 85%;
   border: 2px solid #150019;
+  border-bottom: none;
+  border-top: none;
 }
