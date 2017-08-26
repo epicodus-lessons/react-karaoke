@@ -6,6 +6,11 @@ body, #react-app-root, .container {
   box-sizing:border-box;
   font-family: sans-serif;
   color: #150019;
+  background-color: #FCFCFC;
+}
+
+body {
+  background-color: #150019;
 }
 
 .container {

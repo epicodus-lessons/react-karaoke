@@ -4,6 +4,8 @@ const chorusArray = BYE_BYE_BYE.split(", ");
 const startPosition = 0;
 
 export const defaultState = {
+  songTitle: "Bye Bye Bye",
+  artist: "N'Sync",
   chorusString: BYE_BYE_BYE,
   chorusArray: chorusArray,
   arrayPosition: startPosition,
