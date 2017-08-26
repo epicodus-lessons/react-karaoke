@@ -1,8 +1,8 @@
-import * as types from "./../../src/constants/ActionTypes";
-import { defaultState } from "./../../src/constants/DefaultState";
+import constants from "./../../src/constants";
 import reducer from "./../../src/reducers";
 
 describe("Karaoke Reducer", () => {
+  const { defaultState, types } = constants;
 
   it('should return default state', () => {
     expect(reducer(defaultState, { type: null })).toEqual(defaultState);
