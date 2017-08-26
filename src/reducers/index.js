@@ -1,7 +1,7 @@
-import * as types from "./../constants/ActionTypes";
-import { defaultState } from "./../constants/DefaultState";
+import constants from "./../constants";
 
 const reducer = (state = defaultState, action) => {
+  const { defaultState, types } = constants;
   let newState;
   switch (action.type) {
     case types.NEXT_LINE:
