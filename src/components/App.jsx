@@ -1,10 +1,12 @@
 import React from "react";
 import SongDisplay from "./SongDisplay";
+import Header from "./Header";
 import styles from "./../styles/App.css";
 
 function App(){
   return (
     <div className = {styles.app}>
+      <Header />
       <div className = "container">
         <SongDisplay />
       </div>
