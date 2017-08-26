@@ -5,7 +5,7 @@ function SongSearch(){
   return (
     <div className = {styles.songSearch}>
       <form>
-        <input defaultValue="song search"></input>
+        <input placeholder="Song Title"></input>
         <button>search</button>
       </form>
     </div>
