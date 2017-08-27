@@ -8,22 +8,21 @@ describe("Karaoke App", () => {
 
   describe("Songs By Title Reducer", () => {
     const songData = defaultState.songsById[defaultState.selectedSong];
-    let newSongData;
     it('should return default state', () => {
       expect(songsById(defaultState.songsById, { type: null }))
       .toEqual(defaultState.songsById);
     });
 
     it("should update chorus phrase", () => {
-      newSongData = songsById(defaultState.songsById, actions.nextLine(defaultState.selectedSong))[defaultState.selectedSong];
+      const newSongData = songsById(defaultState.songsById, actions.nextLine(defaultState.selectedSong))[defaultState.selectedSong];
       expect(newSongData.currentPhrase)
       .toEqual(songData.songArray[1]);
     });
 
-    // it("should restart song", () => {
-    //   const newState = reducer(defaultState, { type: types.NEXT_LINE });
-    //   expect(reducer(newState, { type: types.RESTART_SONG })).toEqual(defaultState);
-    // });
+    it("should restart song", () => {
+      const newState = songsById(defaultState.songsById, actions.nextLine(defaultState.selectedSong));
+      expect(songsById(newState, actions.restartSong(defaultState.selectedSong))).toEqual(defaultState);
+    });
 
   });
 
