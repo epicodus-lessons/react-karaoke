@@ -8,7 +8,7 @@ function App(){
     <div className = {styles.app}>
       <Header />
       <div>
-        <hr/>  
+        <hr className = {styles.devider}/>  
       </div>
       <div className = "container">
         <SongDisplay />

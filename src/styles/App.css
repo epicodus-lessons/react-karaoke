@@ -3,7 +3,7 @@
   min-height: 100%;
 }
 
-.app hr {
+.devider {
   margin: 0;
   border: 5px solid #FCFCFC;
   border-right: 0;
