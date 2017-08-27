@@ -20,8 +20,9 @@ describe("Karaoke App", () => {
     });
 
     it("should restart song", () => {
-      const newState = songsById(defaultState.songsById, actions.nextLine(defaultState.selectedSong));
-      expect(songsById(newState, actions.restartSong(defaultState.selectedSong))).toEqual(defaultState);
+      const newSongsById = songsById(defaultState.songsById, actions.nextLine(defaultState.selectedSong));
+      expect(songsById(newSongsById, actions.restartSong(defaultState.selectedSong)))
+      .toEqual(defaultState.songsById);
     });
 
   });

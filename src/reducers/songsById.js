@@ -20,15 +20,15 @@ const songsById = (state = defaultState.songs, action) => {
 
       return newState;
     case types.RESTART_SONG:
-      // song = state[action.id];
-      // const startPhrase = song.songArray[0];
-      // newSong = Object.assign({}, song, {
-      //   currentPhrase: startPhrase,
-      //   arrayPosition: 0
-      // });
-      // newState = Object.assign({}, state, {
-      //   [action.id]: newSong
-      // });
+      song = state[action.songId];
+      const startPhrase = song.songArray[0];
+      newSong = Object.assign({}, song, {
+        currentPhrase: startPhrase,
+        arrayPosition: 0
+      });
+      newState = Object.assign({}, state, {
+        [action.songId]: newSong
+      });
       return newState;
     case types.RECIEVE_SONG:
 
