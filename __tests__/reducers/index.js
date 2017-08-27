@@ -26,8 +26,15 @@ describe("Karaoke App", () => {
     });
 
     it("update state on request song", () => {
-      expect(songsById(defaultState.songsById, actions.requestSong("kiss", "prince")))
-      .toEqual("test");
+      const action = actions.requestSong("kiss", "prince");
+      const newObject = {
+        isFetchingLyrics: true,
+        title: action.title,
+        artist: action.artist,
+        songId: action.songId,
+      };
+      expect(songsById(defaultState.songsById, action)[action.songId])
+      .toEqual(newObject);
     });
 
   });

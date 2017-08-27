@@ -30,6 +30,19 @@ const songsById = (state = defaultState.songsById, action) => {
         [action.songId]: newSong
       });
       return newState;
+    case types.REQUEST_SONG:
+      newSong = {
+        isFetchingLyrics: true,
+        title: action.title,
+        artist: action.artist,
+        songId: action.songId,
+      };
+      newState = Object.assign({}, state, {
+        [action.songId]: newSong
+      });
+
+      console.log(newState);
+      return newState;
     case types.RECIEVE_SONG:
 
       return newState;
