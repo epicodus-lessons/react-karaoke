@@ -36,9 +36,9 @@ describe("Karaoke App", () => {
       expect(selectedSong(initialState, { type: null })).toEqual(initialState);
     });
 
-    // it('should change selectedSong', () => {
-    //   expect(selectedSong(initialState, actions.selectSong(defaultState.selectedSong))).toEqual(defaultState);
-    // });
+    it('should change selectedSong', () => {
+      expect(selectedSong(initialState, actions.selectSong(defaultState.selectedSong))).toEqual(defaultState);
+    });
 
   });
 
