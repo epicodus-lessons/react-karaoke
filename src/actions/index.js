@@ -15,10 +15,15 @@ export const selectSong = (songId) => ({
   songId
 });
 
-export const recieveSong = () => ({
-  type: types.RECIEVE_SONG
+export const recieveSong = (title, artist, json) => ({
+  type: types.RECIEVE_SONG,
+  title,
+  response: json,
+  receivedAt: Date.now()
 });
 
-export const requestSong = () => ({
-  type: types.REQUEST_SONG
+export const requestSong = (title, artist) => ({
+  type: types.REQUEST_SONG,
+  title,
+  artist
 });
