@@ -18,3 +18,7 @@ export const selectSong = (songId) => ({
 export const recieveSong = () => ({
   type: types.RECIEVE_SONG
 });
+
+export const requestSong = () => ({
+  type: types.REQUEST_SONG
+});
