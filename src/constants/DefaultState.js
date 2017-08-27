@@ -32,7 +32,7 @@ export const defaultState = {
       recievedAt: 1503777196682,
       title: "Bye Bye Bye",
       artist: "N'Sync",
-      id: 0,
+      songId: 0,
       songArray: chorusArray,
       arrayPosition: 0,
       currentPhrase: chorusArray[0]
