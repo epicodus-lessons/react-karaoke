@@ -5,20 +5,20 @@ import { connect } from "react-redux";
 import { nextLine, restartSong } from "./../actions";
 
 const SongDisplay = ({ dispatch, song }) => {
-  const { songTitle, artist, currentPhrase, chorusArray, arrayPosition } = song;
+  const { title, artist, currentPhrase, songArray, arrayPosition, songId } = song;
   return (
     <div className = {styles.songDisplay}>
       <div className = {styles.songInfo}>
-        <h1>{songTitle}</h1>
+        <h1>{title}</h1>
         <hr/>
         <h4>{artist}</h4>
       </div>
       <div className = {styles.phrase} onClick={e => {
         e.preventDefault();
-        if(!(arrayPosition === chorusArray.length - 1)) {
-          dispatch(nextLine());
+        if(!(arrayPosition === songArray.length - 1)) {
+          dispatch(nextLine(songId));
         } else {
-          dispatch(restartSong());
+          dispatch(restartSong(songId));
         }
       }}>
         <h1>
@@ -34,14 +34,23 @@ SongDisplay.propTypes = {
   songTitle: PropTypes.string,
   artist: PropTypes.string,
   currentPhrase: PropTypes.string,
-  chorusArray: PropTypes.array,
+  songArray: PropTypes.array,
   arrayPosition: PropTypes.number,
   dispatch: PropTypes.func
 };
 
 const mapStateToProps = state => {
+  const song = state.songsById[state.selectedSong];
+  const songInfo = {
+    songId: song.songId,
+    artist: song.artist,
+    title: song.title,
+    currentPhrase: song.currentPhrase,
+    songArray: song.songArray,
+    arrayPosition: song.arrayPosition
+  }
   return {
-    song: state
+    song: songInfo
   };
 };
 
