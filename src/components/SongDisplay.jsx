@@ -40,8 +40,14 @@ SongDisplay.propTypes = {
 };
 
 const mapStateToProps = state => {
+  const song = state.songsById[state.selectedSong];
+  const songInfo = {
+    artist: song.artist,
+    title: song.title,
+    currentPhrase: song.currentPhrase
+  }
   return {
-    song: state
+    song: songInfo
   };
 };
 
