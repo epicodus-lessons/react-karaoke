@@ -1,7 +1,7 @@
 import constants from "./../constants";
 const { defaultState, types } = constants;
 
-const songsById = (state = defaultState.songs, action) => {
+const songsById = (state = defaultState.songsById, action) => {
   let song;
   let newSong;
   let newState;
