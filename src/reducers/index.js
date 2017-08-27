@@ -1,34 +1,10 @@
-import constants from "./../constants";
-const { defaultState, types } = constants;
+import { combineReducers } from "redux";
+import selectedSong from "./selectedSong";
+import songsById from "./songsById";
 
-const reducer = (state = defaultState, action) => {
-  let newState;
-  switch (action.type) {
-    case types.NEXT_LINE:
-      let newPosition = state.arrayPosition + 1;
-      newState = {
-        songTitle: state.songTitle,
-        artist: state.artist,
-        chorusString: state.chorusString,
-        chorusArray: state.chorusArray,
-        arrayPosition: newPosition,
-        currentPhrase: state.chorusArray[newPosition]
-      };
-      return newState;
-    case types.RESTART_SONG:
-      newState = {
-        songTitle: state.songTitle,
-        artist: state.artist,
-        chorusString: state.chorusString,
-        chorusArray: state.chorusArray,
-        arrayPosition: 0,
-        currentPhrase: state.chorusArray[0]
-      };
-      return newState;
-    default:
-      return state;
-  }
-};
+const rootReducer = combineReducers({
+  selectedSong,
+  songsById
+});
 
-
-export default reducer;
+export default rootReducer;
