@@ -8,9 +8,9 @@ describe("Karaoke App", () => {
 
   describe("Songs By Title Reducer", () => {
 
-    // it('should return default state', () => {
-    //   expect(songsById(defaultState.songsById, { type: null })).toEqual("test");
-    // });
+    it('should return default state', () => {
+      expect(songsById(defaultState.songsById, { type: null })).toEqual("test");
+    });
 
     // it("should update chorus phrase", () => {
     //   expect(reducer(defaultState, { type: types.NEXT_LINE }).currentPhrase).toEqual(defaultState.chorusArray[1]);
