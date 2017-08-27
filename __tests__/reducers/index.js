@@ -25,6 +25,11 @@ describe("Karaoke App", () => {
       .toEqual(defaultState.songsById);
     });
 
+    it("update state on request song", () => {
+      expect(songsById(defaultState.songsById, actions.requestSong("kiss", "prince")))
+      .toEqual("test");
+    });
+
   });
 
   describe("Select Song Reducer", () => {
