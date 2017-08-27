@@ -27,4 +27,19 @@ describe("Karaoke App", () => {
 
   });
 
+  describe("Select Song Reducer", () => {
+    const initialState = Object.assign({}, defaultState, {
+      selectedSong: "prince_kiss"
+    });
+
+    it('should return default state', () => {
+      expect(selectedSong(initialState, { type: null })).toEqual(initialState);
+    });
+
+    // it('should change selectedSong', () => {
+    //   expect(selectedSong(initialState, actions.selectSong(defaultState.selectedSong))).toEqual(defaultState);
+    // });
+
+  });
+
 });
