@@ -9,7 +9,7 @@ describe("Karaoke App", () => {
   describe("Songs By Title Reducer", () => {
 
     it('should return default state', () => {
-      expect(songsById(defaultState.songsById, { type: null })).toEqual("test");
+      expect(songsById(defaultState.songsById, { type: null })).toEqual(defaultState.songsById);
     });
 
     // it("should update chorus phrase", () => {
