@@ -10,7 +10,7 @@ const selectedSong = (state = defaultState.selectedSong, action) => {
       // });
       // return newState;
     default:
-      // return state;
+      return state;
   }
 };
 
