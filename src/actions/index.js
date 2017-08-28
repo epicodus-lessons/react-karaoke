@@ -33,7 +33,10 @@ export const requestSong = (title, artist) => ({
 export function fetchLyrics(title, artist) {
   return function (dispatch) {
     dispatch(requestSong(title, artist));
-    return fetch("http://api.musixmatch.com/ws/1.1/track.search?q_artist=${artist}&q_track=${title}&page_size=1&s_track_rating=desc&apikey=a8503c69d6322a8e9e7faaaa8afc05a1")
+    artist = artist.replace(" ", "_");
+    title = title.replace(" ", "_");
+
+    return fetch("http://api.musixmatch.com/ws/1.1/track.search?q_artist=justin_bieber&q_track=baby&page_size=1&s_track_rating=desc&apikey=a8503c69d6322a8e9e7faaaa8afc05a1")
     .then(
       response => response.json(),
       error => console.log("An error occured.", error)
