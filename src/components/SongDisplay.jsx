@@ -48,7 +48,7 @@ const mapStateToProps = state => {
     currentPhrase: song.currentPhrase,
     songArray: song.songArray,
     arrayPosition: song.arrayPosition
-  }
+  };
   return {
     song: songInfo
   };

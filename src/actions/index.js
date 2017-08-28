@@ -38,11 +38,11 @@ export function fetchLyrics(title, artist) {
       response => response.json(),
       error => console.log("An error occured.", error)
     )
-    .then(jason => (
+    .then(json => (
         // have to make extra call here to get lyrics with response.track_id
         console.log(json)
 
       )
-    )
-  }
+    );
+  };
 }
