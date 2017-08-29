@@ -30,22 +30,40 @@ export const requestSong = (title, artist) => ({
   songId: v4()
 });
 
-export function fetchLyrics(title, artist) {
+export function fetchSongId(title, artist) {
   return function (dispatch) {
     dispatch(requestSong(title, artist));
     artist = artist.replace(" ", "_");
     title = title.replace(" ", "_");
 
-    return fetch("http://api.musixmatch.com/ws/1.1/track.search?q_artist=justin_bieber&q_track=baby&page_size=1&s_track_rating=desc&apikey=a8503c69d6322a8e9e7faaaa8afc05a1")
+    return fetch("http://api.musixmatch.com/ws/1.1/track.search?q_artist=" + artist + "&q_track=" + title + "&page_size=1&s_track_rating=desc&apikey=a8503c69d6322a8e9e7faaaa8afc05a1")
     .then(
       response => response.json(),
       error => console.log("An error occured.", error)
     )
-    .then(json => (
-        // have to make extra call here to get lyrics with response.track_id
-        console.log(json)
-
-      )
-    );
+    .then(function(json) {
+      if (json.message.body.track_list.length > 0) {
+        const id = json.message.body.track_list[0].track.track_id;
+        fetchLyrics(id);
+      } else {
+        console.log("failed id search")
+      }
+    });
   };
+}
+
+export function fetchLyrics(id) {
+  return fetch("http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + id + "&apikey=a8503c69d6322a8e9e7faaaa8afc05a1")
+  .then(
+    response => response.json(),
+    error => console.log("An error occured.", error)
+  )
+  .then(function(json) {
+    if (json.message.body.lyrics) {
+      console.log(json.message.body.lyrics);
+
+    } else {
+      console.log("failed lyrics search")
+    }
+  });
 }

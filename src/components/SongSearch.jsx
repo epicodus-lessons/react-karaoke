@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./../styles/SongSearch.css";
-import { fetchLyrics } from "./../actions";
+import { fetchSongId } from "./../actions";
 import { connect } from "react-redux";
 
 class SongSearch extends React.Component {
@@ -18,7 +18,7 @@ class SongSearch extends React.Component {
       return;
     }
 
-    this.props.dispatch(fetchLyrics(_title.value.trim(), _artist.value.trim()));
+    this.props.dispatch(fetchSongId(_title.value.trim(), _artist.value.trim()));
 
     _title.value = "";
     _artist.value = "";
