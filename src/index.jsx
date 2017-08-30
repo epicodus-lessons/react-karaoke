@@ -2,11 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
 import styles from "./styles/styles.css";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import thunkMiddleware from "redux-thunk";
+import { createLogger } from "redux-logger";
+import { fetchSong } from "./actions";
 import { Provider } from "react-redux";
-import reducer from "./reducers";
+import rootReducer from "./reducers";
 
-const store = createStore(reducer);
+const loggerMiddleware = createLogger();
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(
+    thunkMiddleware,
+    loggerMiddleware
+  )
+);
 
 ReactDOM.render(
   <Provider store={store}>

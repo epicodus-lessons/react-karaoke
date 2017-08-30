@@ -1,31 +1,43 @@
 import React from "react";
 import styles from "./../styles/SongSearch.css";
+import { fetchSongId } from "./../actions";
+import { connect } from "react-redux";
 
-function SongSearch(){
-  let input;
+class SongSearch extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className = {styles.songSearch}>
-      <form onSubmit={e => {
-        e.preventDefault();
-        if (!input.value.trim()) {
-          return;
-        }
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-        // this is where custom logic goes
-        console.log("SEARCHED ARTIST:");
-        console.log(input.value.trim());
-        //
+  handleSubmit(event) {
+    event.preventDefault();
+    let { _title, _artist } = this.refs;
 
-        input.value = "";
-      }}>
-        <input placeholder="Song Title" ref={node => {
-          input = node;
-        }}></input>
-        <button>search</button>
-      </form>
-    </div>
-  );
+    if (!_artist.value.trim() || !_title.value.trim()) {
+      return;
+    }
+
+    this.props.dispatch(fetchSongId(_title.value.trim(), _artist.value.trim()));
+
+    _title.value = "";
+    _artist.value = "";
+  }
+
+  render() {
+    return (
+      <div className = {styles.songSearch}>
+        <form onSubmit={this.handleSubmit}>
+
+          <input placeholder="Title" ref="_title"></input>
+          <input placeholder="Artist" ref="_artist"></input>
+
+          <button>search</button>
+        </form>
+      </div>
+    );
+  }
 }
 
-export default SongSearch;
+
+export default connect()(SongSearch);

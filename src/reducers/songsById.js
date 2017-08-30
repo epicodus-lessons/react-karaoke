@@ -5,6 +5,7 @@ const songsById = (state = defaultState.songsById, action) => {
   let song;
   let newSong;
   let newState;
+  let startPhrase;
   switch (action.type) {
     case types.NEXT_LINE:
       song = state[action.songId];
@@ -21,7 +22,7 @@ const songsById = (state = defaultState.songsById, action) => {
       return newState;
     case types.RESTART_SONG:
       song = state[action.songId];
-      const startPhrase = song.songArray[0];
+      startPhrase = song.songArray[0];
       newSong = Object.assign({}, song, {
         currentPhrase: startPhrase,
         arrayPosition: 0
@@ -31,7 +32,35 @@ const songsById = (state = defaultState.songsById, action) => {
       });
       return newState;
     case types.RECIEVE_SONG:
-
+      song = state[action.songId];
+      startPhrase = action.songArray[0];
+      newSong = Object.assign({}, song, {
+        isFetching: false,
+        receivedAt: action.receivedAt,
+        title: action.title,
+        artist: action.artist,
+        songArray: action.songArray,
+        arrayPosition: 0,
+        currentPhrase: action.songArray[0],
+        currentPhrase: startPhrase,
+        arrayPosition: 0,
+        songId: action.songId
+      });
+      newState = Object.assign({}, state, {
+        [action.songId]: newSong
+      });
+      console.log(newState);
+      return newState;
+    case types.REQUEST_SONG:
+      newSong = Object.assign({}, song, {
+        isFetching: true,
+        title: action.title,
+        artist: action.artist,
+        songId: action.songId
+      });
+      newState = Object.assign({}, state, {
+        [action.songId]: newSong
+      });
       return newState;
     default:
       return state;
