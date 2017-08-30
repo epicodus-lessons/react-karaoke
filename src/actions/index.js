@@ -16,23 +16,26 @@ export const selectSong = (songId) => ({
   songId
 });
 
-export const recieveSong = (title, artist, json) => ({
+export const recieveSong = (title, artist, songId, songArray) => ({
   type: types.RECIEVE_SONG,
+  songId,
   title,
-  response: json,
+  artist,
+  songArray,
   receivedAt: Date.now()
 });
 
-export const requestSong = (title, artist) => ({
+export const requestSong = (title, artist, localSongId) => ({
   type: types.REQUEST_SONG,
   title,
   artist,
-  songId: v4()
+  songId: localSongId
 });
 
 export function fetchSongId(title, artist) {
   return function (dispatch) {
-    dispatch(requestSong(title, artist));
+    const localSongId = v4();
+    dispatch(requestSong(title, artist, localSongId));
     artist = artist.replace(" ", "_");
     title = title.replace(" ", "_");
 
@@ -43,8 +46,10 @@ export function fetchSongId(title, artist) {
     )
     .then(function(json) {
       if (json.message.body.track_list.length > 0) {
-        const id = json.message.body.track_list[0].track.track_id;
-        fetchLyrics(id);
+        const musicMatchId = json.message.body.track_list[0].track.track_id;
+        const artist = json.message.body.track_list[0].track.artist_name;
+        const title = json.message.body.track_list[0].track.track_name;
+        fetchLyrics(title, artist, musicMatchId, localSongId, dispatch);
       } else {
         console.log("failed id search")
       }
@@ -52,15 +57,19 @@ export function fetchSongId(title, artist) {
   };
 }
 
-export function fetchLyrics(id) {
-  return fetch("http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + id + "&apikey=a8503c69d6322a8e9e7faaaa8afc05a1")
+export function fetchLyrics(title, artist, musicMatchId, localSongId, dispatch) {
+  return fetch("http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + musicMatchId + "&apikey=a8503c69d6322a8e9e7faaaa8afc05a1")
   .then(
     response => response.json(),
     error => console.log("An error occured.", error)
   )
   .then(function(json) {
     if (json.message.body.lyrics) {
-      console.log(json.message.body.lyrics);
+      let lyrics = json.message.body.lyrics.lyrics_body;
+      lyrics = lyrics.replace('"', "");
+      const songArray = lyrics.split(/\n/g);
+      dispatch(recieveSong(title, artist, localSongId, songArray));
+      dispatch(selectSong(localSongId));
 
     } else {
       console.log("failed lyrics search")

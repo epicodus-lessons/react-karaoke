@@ -27,8 +27,7 @@ export const defaultState = {
   selectedSong: 0,
   songsById: {
     0: {
-      isFetchingId: false,
-      isFetchingLyrics: false,
+      isFetching: false,
       recievedAt: 1503777196682,
       title: "Bye Bye Bye",
       artist: "N'Sync",
