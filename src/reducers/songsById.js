@@ -30,9 +30,6 @@ const songsById = (state = defaultState.songsById, action) => {
         [action.songId]: newSong
       });
       return newState;
-    case types.RECIEVE_SONG:
-
-      return newState;
     default:
       return state;
   }
